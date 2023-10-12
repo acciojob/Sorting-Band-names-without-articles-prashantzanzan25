@@ -1,22 +1,25 @@
-let touristSpots = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
-
-// Function to remove articles ('a', 'an', 'the') and return the cleaned name
-function cleanName(name) {
-  return name.replace(/^(a|an|the) /i, '');
+ //your code here
+ 
+// Function to remove articles ('a', 'an', 'the') from a string
+function removeArticles(name) {
+  return name.replace(/^(a|an|the)\s+/i, '').trim();
 }
-
-// Sort the array without articles
-touristSpots.sort((a, b) => cleanName(a).localeCompare(cleanName(b)));
-
+ 
+// Array of band names
+let bandNames = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal']
+ 
+// Remove articles and sort the band names
+let sortedBandNames = bandNames.map(removeArticles).sort();
+ 
 // Create an HTML list
 const ul = document.createElement('ul');
 ul.id = 'band';
-
-touristSpots.forEach(bandName => {
+ 
+sortedBandNames.forEach(name => {
   const li = document.createElement('li');
-  li.textContent = bandName;
+  li.textContent = name;
   ul.appendChild(li);
 });
-
-// Add the list to the document
-document.getElementById('band').replaceWith(ul);
+ 
+// Append the list to the document's body or another desired location
+document.body.appendChild(ul);
